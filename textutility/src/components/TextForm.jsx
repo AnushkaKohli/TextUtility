@@ -192,13 +192,13 @@ export default function TextForm(props) {
         <h3>Text Summary</h3>
         <p>
           {" "}
-          {text.split(" ").filter((element) => {
+          {text.split(/\s+/).filter((element) => {
             return element.length!==0
           }).length} words and {text.length} characters{" "}
         </p>
         <p>
           {" "}
-          {0.008 * text.split(" ").filter((element) => {
+          {0.008 * text.split(/\s+/).filter((element) => {
             return element.length!==0
           }).length} minutes is required to read the given
           text{" "}
