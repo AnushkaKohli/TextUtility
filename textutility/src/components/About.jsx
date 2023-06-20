@@ -1,32 +1,41 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-    const [myStyle, setMyStyle] = useState({
-        color : 'black',
-        backgroundColor : 'white'
-    })
+export default function About(props) {
+    // const [myStyle, setMyStyle] = useState({
+    //     color : 'black',
+    //     backgroundColor : 'white'
+    // })
 
-    const [btnText, setBtnText] = useState("Enable Dark Mode")
+    // const [btnText, setBtnText] = useState("Enable Dark Mode")
 
-    const toggleStyle = () => {
-        if(myStyle.color==='black'){
-            setMyStyle({
-                color : 'white',
-                backgroundColor : 'black'
-            });
-            setBtnText("Enable Light Mode");
-        }
-        else{
-            setMyStyle({
-                color : 'black',
-                backgroundColor : 'white'
-            });
-            setBtnText("Enable Dark Mode");
-        }
-    }
+    // const toggleStyle = () => {
+    //     if(myStyle.color==='black'){
+    //         setMyStyle({
+    //             color : 'white',
+    //             backgroundColor : 'black'
+    //         });
+    //         setBtnText("Enable Light Mode");
+    //     } 
+    //     else{
+    //         setMyStyle({
+    //             color : 'black',
+    //             backgroundColor : 'white'
+    //         });
+    //         setBtnText("Enable Dark Mode");
+    //     }
+    // }
+
+  let myStyle = {
+    color : props.mode === "dark" ? "white" : "black",
+    backgroundColor : props.mode === "dark" ? "#2e2e2e" : "white"
+  }
 
   return (
-    <div className="container" style={myStyle}>
+    <div className="container pb-3" style={{color : props.mode === "dark" ? "white" : "black",
+    backgroundColor : props.mode === "dark" ? "#2e2e2e" : "white", 
+    border : props.mode === "dark" ? "2px solid white" : "null",
+    borderRadius : props.mode === "dark" ? "15px" : "null"}}>
     <h2 className="mt-1 pt-3">About Us</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -40,7 +49,7 @@ export default function About() {
               aria-controls="collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              <strong>Analyze Your Text</strong>
             </button>
           </h2>
           <div
@@ -48,15 +57,8 @@ export default function About() {
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+            Our app provides powerful text analysis tools to help you gain insights into your content. Analyze word count, character count, readability, and more with just a few clicks.
             </div>
           </div>
         </div>
@@ -71,7 +73,7 @@ export default function About() {
               aria-controls="collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              <strong>Free to Use</strong>
             </button>
           </h2>
           <div
@@ -79,15 +81,8 @@ export default function About() {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+            Our text utility app is completely free to use, offering a wide range of features without any subscription fees or hidden charges. Enjoy the convenience and functionality without any cost.
             </div>
           </div>
         </div>
@@ -102,7 +97,7 @@ export default function About() {
               aria-controls="collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              <strong>Save Time and Effort</strong>
             </button>
           </h2>
           <div
@@ -110,22 +105,15 @@ export default function About() {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+            Our text utility app is built to streamline your text editing tasks and save you valuable time and effort. With our comprehensive range of features, you can quickly modify your text as needed.
             </div>
           </div>
         </div>
       </div>
-      <div className="container">
+      {/* <div className="container">
       <button type="button" className="btn btn-primary my-3" onClick={toggleStyle}>{btnText}</button>
-      </div>
+      </div> */}
     </div>
   );
 }

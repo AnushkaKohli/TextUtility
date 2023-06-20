@@ -44,8 +44,9 @@ function App() {
           renders the first one that matches the current URL. */}
       <Routes>
         <Route exact path="/" element={<TextForm heading = "Enter the text to analyze" mode={mode} showAlert = {showAlert} />} />
-        <Route exact path="/about" element={<About />} />
+        <Route exact path="/about" element={<About mode={mode} />} />
       </Routes>
+      {/* <TextForm heading = "Enter the text to analyze" mode={mode} showAlert = {showAlert} /> */}
     </>
   );
 }

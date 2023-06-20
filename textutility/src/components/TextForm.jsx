@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -107,49 +108,49 @@ export default function TextForm(props) {
         </div>
         <div className="container d-flex justify-content-center">
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleUpClick}
           >
             UPPERCASE
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleLowClick}
           >
             lowercase
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleToggleClick}
           >
             tOGGLE cASE
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleSentenceClick}
           >
             Sentence case
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleCapitalizeClick}
           >
             Capitalize First Letter
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleAlternateClick}
           >
             AlTeRnAtE cAsE
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleExtraSpaces}
           >
@@ -159,14 +160,14 @@ export default function TextForm(props) {
 
         <div className="container d-flex justify-content-center">
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleCopy}
           >
             Copy Text
           </button>
           <button
-            type="button"
+            type="button" disabled={text.length===0}
             className="btn btn-primary mx-1 my-1"
             onClick={handleClearClick}
           >
@@ -191,15 +192,19 @@ export default function TextForm(props) {
         <h3>Text Summary</h3>
         <p>
           {" "}
-          {text.split(" ").length} words and {text.length} characters{" "}
+          {text.split(" ").filter((element) => {
+            return element.length!==0
+          }).length} words and {text.length} characters{" "}
         </p>
         <p>
           {" "}
-          {0.008 * text.split(" ").length} minutes is required to read the given
+          {0.008 * text.split(" ").filter((element) => {
+            return element.length!==0
+          }).length} minutes is required to read the given
           text{" "}
         </p>
         <h3>Preview</h3>
-        <p>{text.length>0 ? text : "Enter your text in the textbox above to preview here"}</p>
+        <p>{text.length>0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );
